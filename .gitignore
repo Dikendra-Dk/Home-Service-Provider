@@ -1,0 +1,14 @@
+# Environment & Credentials
+.env
+*.log
+cookies.txt
+*.cookie.txt
+
+# Docker Volume Data
+mysql_data/
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
