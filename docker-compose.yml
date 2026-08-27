@@ -1,0 +1,72 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sewasathi_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_NAME=sewasathi_db
+      - DB_USER=sewasathi_user
+      - DB_PASS=sewasathi_pass
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - sewasathi_network
+
+  db:
+    image: mysql:8.0
+    container_name: sewasathi_db
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: sewasathi_db
+      MYSQL_USER: sewasathi_user
+      MYSQL_PASSWORD: sewasathi_pass
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+      - ./database/seed.sql:/docker-entrypoint-initdb.d/02-seed.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    networks:
+      - sewasathi_network
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: sewasathi_pma
+    restart: unless-stopped
+    ports:
+      - "8085:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+      UPLOAD_LIMIT: 64M
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - sewasathi_network
+
+networks:
+  sewasathi_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local

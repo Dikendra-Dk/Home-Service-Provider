@@ -1,0 +1,117 @@
+/* SewaSathi Custom Design System Styles */
+
+:root {
+    --brand-crimson: #C41E3A;
+    --brand-dark: #991B1B;
+    --navy-dark: #0F172A;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Soft Card Elevation */
+.card-soft {
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+    border-radius: 1rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-soft:hover {
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.08);
+    border-color: rgba(203, 213, 225, 0.9);
+}
+
+/* Live Pulse Badges */
+.pulse-available {
+    position: relative;
+}
+.pulse-available::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -12px;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #10B981;
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+    0% {
+        transform: translateY(-50%) scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    }
+    70% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    }
+    100% {
+        transform: translateY(-50%) scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+/* Skeleton Loading Animation */
+.skeleton-loader {
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: 0.5rem;
+}
+
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Step Connector Line */
+.step-line-active {
+    background-color: #C41E3A;
+}
+.step-line-inactive {
+    background-color: #E2E8F0;
+}
+
+/* Hero Badge */
+.hero-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(196, 30, 58, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+/* Checkmark animation */
+@keyframes checkPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.check-pop {
+    animation: checkPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
