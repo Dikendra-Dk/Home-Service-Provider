@@ -164,7 +164,7 @@ $featuredProviders = $provStmt->fetchAll();
                     </p>
                     <div class="mt-4 pt-3 border-t border-slate-200/60 flex items-center gap-2 text-[11px] font-bold text-slate-500">
                         <?= icon('clock', 'w-3.5 h-3.5 text-brand') ?>
-                        <span>30-45 Min arrival time</span>
+                        <span>10-45 Min arrival time</span>
                     </div>
                 </div>
 
