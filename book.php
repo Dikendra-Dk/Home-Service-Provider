@@ -66,7 +66,7 @@ require_once __DIR__ . '/includes/header.php';
                 <div class="w-12 h-0.5 bg-slate-200 mx-2"></div>
                 <div class="flex items-center gap-2">
                     <div id="stepIndicator3" class="w-8 h-8 rounded-full bg-slate-100 text-slate-400 border border-slate-200 flex items-center justify-center font-bold text-xs">3</div>
-                    <span class="text-xs font-bold text-slate-400">Confirm</span>
+                    <span class="text-xs font-bold text-slate-400">Conform</span>
                 </div>
             </div>
         </div>
@@ -330,7 +330,7 @@ require_once __DIR__ . '/includes/header.php';
                                 Go to My Bookings
                             </a>
                             <a href="/search.php" class="w-full sm:w-auto px-6 py-3 text-xs font-bold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-xl">
-                                Book Another Service
+                                Book Another Services
                             </a>
                         </div>
                     </div>
